@@ -10,6 +10,7 @@
 #define NFI_PLUGIN_MANAGER_H
 
 #include "NFIModule.h"
+#include "NFPlatform.h"
 
 typedef std::function<bool (const std::string &strFileName, std::string &strContent)> GET_FILECONTENT_FUNCTOR;
 
@@ -36,8 +37,11 @@ public:
 			{
 				return NULL;
 			}
-
+#if NF_PLATFORM == NF_PLATFORM_APPLE
+			T* pT = (T*)pLogicModule;
+#else
 			T* pT = dynamic_cast<T*>(pLogicModule);
+#endif // NF_PLATFORM
 			assert(NULL != pT);
 
 			return pT;

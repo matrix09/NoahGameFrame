@@ -30,8 +30,13 @@ endmacro()
 
 project(NoahFrame)
 
+#OSX上强制生成so后缀的动态库而不是dylib后缀动态库
+if (APPLE)
+	SET(CMAKE_SHARED_LIBRARY_SUFFIX ".so")
+endif(APPLE)
+
 set(SolutionDir ${PROJECT_SOURCE_DIR})
-if (CMAKE_SYSTEM_NAME MATCHES "Linux")
+if (CMAKE_SYSTEM_NAME MATCHES "Linux" OR CMAKE_SYSTEM_NAME MATCHES "Darwin")
 	if( CMAKE_BUILD_TYPE STREQUAL "Debug" )
 		set(NFOutPutDir ${PROJECT_SOURCE_DIR}/_Out/Debug)
 	else()
@@ -70,7 +75,10 @@ if(UNIX)
 		set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS}  -fPIC -std=c++11 -O3 -Wall")
 	endif()
 	set(LDFLAGS "$ENV{LDFLAGS} -stdlib=libc++")
-	set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
+	#MAC不需要这一行
+	if (NOT APPLE)
+		add_definitions(-std=c++11)
+	endif()
 else()
 	SET ( CMAKE_CXX_FLAGS "-D_X64 -D_WINDOWS /EHsc" )
 	include_directories(${SolutionDir}/Dependencies/libevent/WIN32-Code/)

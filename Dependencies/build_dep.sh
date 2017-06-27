@@ -13,12 +13,12 @@ unzip -o mysqlpp_libs.zip -d ./
 
 # extract libevent libs
 echo Extract libevent libs
-tar -xzvf libevent-2.0.22-stable.tar.gz
+tar -xzvf libevent-2.1.8-stable.tar.gz
 if [ -d ./libevent ]; then
  rm -rf ./libevent
 fi
 
-mv libevent-2.0.22-stable libevent
+mv libevent-2.1.8-stable libevent
 
 # compiling libevent
 cd libevent
@@ -32,18 +32,30 @@ cp -R -f ./.libs/*.a ../lib/Release/
 cd ../
 
 # compiling protobuf
-# cd protobuf
-# chmod -R 755 *
-# ./configure CXXFLAGS=-fPIC
-# make
-# make check
+cd protobuf
+chmod -R 755 *
+./configure CXXFLAGS=-fPIC
+make
+make check
 
-# cp -r -f ./src/.libs/*.so ../../_Out/Debug/
-# cp -r -f ./src/.libs/*.so.* ../../_Out/Debug/
-# cp -r -f ./src/.libs/*.so ../../_Out/Release/
-# cp -r -f ./src/.libs/*.so.* ../../_Out/Release/
+cp -R -f ./src/.libs/*.a ../lib/Debug/
+cp -R -f ./src/.libs/*.a ../lib/
+cp -R -f ./src/.libs/*.a ../lib/Release/
 
-# cd ../
+cp -r -f ./src/.libs/*.so ../../_Out/Debug/
+cp -r -f ./src/.libs/*.so.* ../../_Out/Debug/
+cp -r -f ./src/.libs/*.so ../../_Out/Release/
+cp -r -f ./src/.libs/*.so.* ../../_Out/Release/
+
+cp -r -f ./src/.libs/*.dylib ../../_Out/Debug/
+cp -r -f ./src/.libs/*.dylib.* ../../_Out/Debug/
+cp -r -f ./src/.libs/*.dylib ../../_Out/Release/
+cp -r -f ./src/.libs/*.dylib.* ../../_Out/Release/
+
+cp -r -f ./src/.libs/*.a ../../_Out/Debug/
+cp -r -f ./src/.libs/*.a ../../_Out/Release/
+
+cd ../
 
 # compiling Theron
 cd Theron
