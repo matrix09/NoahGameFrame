@@ -32,18 +32,18 @@ cp -R -f ./.libs/*.a ../lib/Release/
 cd ../
 
 # compiling protobuf
-cd protobuf
-chmod -R 755 *
-./configure CXXFLAGS=-fPIC
-make
-make check
+# cd protobuf
+# chmod -R 755 *
+# ./configure CXXFLAGS=-fPIC
+# make
+# make check
 
-cp -r -f ./src/.libs/*.so ../../_Out/Debug/
-cp -r -f ./src/.libs/*.so.* ../../_Out/Debug/
-cp -r -f ./src/.libs/*.so ../../_Out/Release/
-cp -r -f ./src/.libs/*.so.* ../../_Out/Release/
+# cp -r -f ./src/.libs/*.so ../../_Out/Debug/
+# cp -r -f ./src/.libs/*.so.* ../../_Out/Debug/
+# cp -r -f ./src/.libs/*.so ../../_Out/Release/
+# cp -r -f ./src/.libs/*.so.* ../../_Out/Release/
 
-cd ../
+# cd ../
 
 # compiling Theron
 cd Theron
