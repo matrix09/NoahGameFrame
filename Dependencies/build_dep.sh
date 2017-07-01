@@ -42,19 +42,10 @@ if [ "$(uname)" == "Darwin" ]; then
     make install
 fi
 
-cp -R -f ./src/.libs/*.a ../lib/Debug/
-cp -R -f ./src/.libs/*.a ../lib/
-cp -R -f ./src/.libs/*.a ../lib/Release/
-
 cp -r -f ./src/.libs/*.so ../../_Out/Debug/
 cp -r -f ./src/.libs/*.so.* ../../_Out/Debug/
 cp -r -f ./src/.libs/*.so ../../_Out/Release/
 cp -r -f ./src/.libs/*.so.* ../../_Out/Release/
-
-cp -r -f ./src/.libs/*.dylib ../../_Out/Debug/
-cp -r -f ./src/.libs/*.dylib.* ../../_Out/Debug/
-cp -r -f ./src/.libs/*.dylib ../../_Out/Release/
-cp -r -f ./src/.libs/*.dylib.* ../../_Out/Release/
 
 cd ../
 

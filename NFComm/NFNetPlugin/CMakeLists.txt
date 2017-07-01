@@ -29,6 +29,7 @@ if (APPLE)
 		target_link_libraries(NFNetPlugin NFMessageDefine)
 	endif()
 	add_definitions(
+		-D_USRDLL
 		-DTHERON_CPP11
 		-D_THREAD_SAFE
 	)

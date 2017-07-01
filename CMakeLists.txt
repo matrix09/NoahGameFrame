@@ -75,7 +75,6 @@ if(UNIX)
 		set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS}  -fPIC -std=c++11 -O3 -Wall")
 	endif()
 	set(LDFLAGS "$ENV{LDFLAGS} -stdlib=libc++")
-	set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
 	#MAC不需要这一行
 	if (NOT APPLE)
 		add_definitions(-std=c++11)
